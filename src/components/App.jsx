@@ -23,12 +23,14 @@ export const App = () => {
       name,
       number,
     };
-    contacts.map(contactItem => {
-      if (contactItem.name === contact.name) {
-        return alert(`${contact.name} is already in contacts`);
-      }
-      return contactItem;
-    });
+    if (
+      contacts.some(
+        contactItem =>
+          contactItem.name.toLowerCase() === contact.name.toLowerCase()
+      )
+    ) {
+      return alert(`${contact.name} is already in contacts`);
+    }
     setContacts(prevState => [contact, ...prevState]);
   };
 
